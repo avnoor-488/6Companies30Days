@@ -82,26 +82,29 @@ void solve()
     int n;
     cin >> n;
 
-    for (int i = 0; i < n; i++)
+    forT(n)
     {
         int num; cin >> num;
         vec.pb(num);
     }
 
     map<int, int>mp;
-    mp[0] = 2;
-    for (int i = 1; i <= n; i++)mp[i] = 0;
-    for (auto it : vec)mp[it]++;
+
+    // mp[0]=2;
     int ans[2];
+    for (int it = 1; it <= n; it++)mp[it] = 0;
+
+    for (auto it : vec)mp[it]++;
 
     for (auto it : mp)
     {
-        if (it.first > 1)ans[0] = it.first;
+        // cout << it.first << " " << it.second << " " << endl;
         if (it.second < 1)ans[1] = it.first;
+        if (it.second > 1)ans[0] = it.first;
     }
+    
+    cout << ans[0] << " " << ans[1] << " ";
 
-    // for (auto it : mp)cout << it.fi << " " << it.sec << endl;
-    cout << ans[0] << " " << ans[1] << endl;
 }
 
 int main() {
